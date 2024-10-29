@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diary Entries</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container entries-container">
+        <div class="header">
+            <h1>Your Diary Entries</h1>
+            <button onclick="window.location.href='{{ url_for('diary') }}'">New Entry</button>
+        </div>
+
+        <ul>
+            {% for entry in entries %}
+                <li>
+                    <a href="{{ url_for('view_entry', id=entry['id']) }}">{{ entry['date'] }}</a>
+                    <a href="{{ url_for('delete_entry', id=entry['id']) }}" style="color: red;">Delete</a>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <button onclick="window.location.href='{{ url_for('logout') }}'">Close Diary</button>
+    </div>
+</body>
+</html>

@@ -8,8 +8,15 @@ desktop.ini
 # Ignore node_modules (if using Node.js in the future)
 node_modules/
 
-# Ignore Python virtual environment (if you set one up)
+# Ignore environment variables and database
+.env
+*.db
+
+# Ignore virtual environment folder
 venv/
+
+# Ignore Python cache
+__pycache__/
 
 # Ignore any log files
 *.log
@@ -20,3 +27,6 @@ venv/
 
 # Ignore macOS system files (just in case you work cross-platform)
 .DS_Store
+
+# Ignore any database files
+*.sqlite3
