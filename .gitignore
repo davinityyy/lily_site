@@ -1,0 +1,22 @@
+# Ignore Windows system files
+Thumbs.db
+desktop.ini
+
+# Ignore VSCode settings
+.vscode/
+
+# Ignore node_modules (if using Node.js in the future)
+node_modules/
+
+# Ignore Python virtual environment (if you set one up)
+venv/
+
+# Ignore any log files
+*.log
+
+# Ignore temporary files
+*.tmp
+*.temp
+
+# Ignore macOS system files (just in case you work cross-platform)
+.DS_Store

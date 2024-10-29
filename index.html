@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lily Site</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="background"></div>
+  <div class="container">
+    <img src="assets/lily_of_the_valley.png" alt="Lily Image" class="corner-image">
+    <h1>Lily of the Valley</h1>
+    <p>this is a container with rounded edges and a lily in the corner</p>
+  </div>
+</body>
+<script>
+    window.onload = () => {
+      // Array of colors manually chosen from lily_of_the_valley.png
+      const colors = [
+        '#e2b1a9',
+        '#ac8074',
+        '#ca8c7b',
+        '#e6c798',
+        '#c4a962',
+        '#dfc479',
+        '#c8cd89',
+        '#928f30',
+        '#9cac57',
+      ];
+  
+      // Function to get 2-3 random colors
+      const getRandomColors = (num) => {
+        const shuffled = colors.sort(() => 0.5 - Math.random());
+        return shuffled.slice(0, num);
+      };
+  
+      // Select random colors and create a gradient
+      const gradientColors = getRandomColors(3);
+      document.querySelector('.background').style.background = `linear-gradient(135deg, ${gradientColors.join(', ')})`;
+    };
+  </script>
+  
+</html>
