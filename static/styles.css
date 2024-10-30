@@ -1,3 +1,4 @@
+/* Font Face Declaration */
 @font-face {
   font-family: 'HugMeTight';
   src: url('fonts/HugMeTight.ttf') format('truetype');
@@ -5,61 +6,149 @@
   font-style: normal;
 }
 
+/* Reset Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global Styles */
 body {
   font-family: 'HugMeTight', sans-serif;
   color: #333;
 }
 
-/* Reset any default margin/padding */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  /* Static background - either gradient or image */
-  .background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%); /* Change to an image URL if needed */
-    z-index: -1;
-  }
-  
-  .container {
-    position: relative;
-    max-width: 600px;
-    min-height: 750px;
-    margin: 50px auto;
-    padding: 50px 30px;
-    background-color: #a7af6f;
-    border-radius: 15px;
-    border: 2px solid #485029;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-
-    /* Center content vertically and horizontally */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+p {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-/* Additional styles for the diary page only */
+h1 {
+  font-family: 'HugMeTight';
+  color: #974d6c;
+  font-size: 1.8rem;
+  margin-bottom: 50px;
+}
+
+/* Background Styles */
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+  z-index: -1;
+}
+
+/* Common Container Styles */
+.container {
+  position: relative;
+  max-width: 600px;
+  min-height: 750px;
+  margin: 50px auto;
+  padding: 50px 30px;
+  background-color: #a7af6f;
+  border-radius: 15px;
+  border: 2px solid #485029;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Common Elements */
+.corner-image {
+  position: absolute;
+  top: -10px;
+  right: -25px;
+  max-width: 350px;
+}
+
+.date-display {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 0.9rem;
+  color: #8f464c;
+  font-family: 'HugMeTight';
+  z-index: 1;
+}
+
+/* Login Page Styles */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 50%;
+  max-width: 300px;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  padding: 10px;
+  font-size: 1rem;
+  color: #a06158;
+  background-color: #cec69d;
+  border: 2px solid #b6856e;
+  border-radius: 5px;
+  text-align: center;
+  font-family: 'HugMeTight';
+  outline: none;
+  transition: background-color 0.2s ease;
+}
+
+.login-form input[type="text"]::placeholder,
+.login-form input[type="password"]::placeholder {
+  color: #b1a87a;
+  opacity: 1;
+}
+
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus {
+  background-color: #c0b78d;
+}
+
+.login-form button {
+  padding: 10px;
+  font-size: 1rem;
+  background-color: #465355;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 40%;
+  margin: 0 auto;
+}
+
+.login-form button:hover {
+  background-color: #333;
+  color: beige;
+}
+
+.error-message {
+  color: rgb(168, 18, 18);
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+/* Diary Page Styles */
 .diary-container {
-  min-height: 80vh; /* Ensures container takes up most of the viewport height */
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  background-color: #fffef5;
 }
 
 .diary-container .diary-form {
   flex-grow: 1;
-  min-height: 70vh; /* Ensures form takes up most of the container */
-  width: 120%; /* Adjusts width to stay within container bounds */
+  min-height: 70vh;
+  width: 120%;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -68,12 +157,14 @@ body {
 
 .diary-container .diary-form textarea {
   flex-grow: 1;
-  padding: 52px 34px 20px; /* Increase top padding for both placeholder and text */
+  padding: 5px 36px 20px;
+  margin-top: 70px;
   font-size: 1rem;
-  line-height: 1.6;
+  line-height: 1.5;
   background-color: #fffef5;
   background-image: linear-gradient(#cec69d 1px, transparent 1px);
   background-size: 100% 24px;
+  background-attachment: local;
   border: none;
   outline: none;
   resize: none;
@@ -82,35 +173,22 @@ body {
   position: relative;
 }
 
-/* Styling for the placeholder text */
 .diary-container .diary-form textarea::placeholder {
   color: #b1a87a;
   opacity: 1;
-  /* Remove additional padding here to match main text */
-}
-
-
-.diary-container .date-display {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  font-size: 0.9rem;
-  color: #8f464c;
-  font-family: 'HugMeTight';
-  z-index: 1; /* Ensure date stays above other content */
 }
 
 .diary-container .diary-form button {
   padding: 10px 15px;
   font-size: 1rem;
-  background-color: #8f464c;
+  background-color: #a76256;
   color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 7px;
   cursor: pointer;
   transition: background-color 0.3s;
   align-self: flex-end;
-  margin-right: 50px;
+  margin: -20px 40px 20px 0;
 }
 
 .diary-container .diary-form button:hover {
@@ -121,16 +199,14 @@ body {
   max-width: 600px;
   margin: 50px auto;
   padding: 30px;
-  background-color: #a7af6f;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-align: center;
-  
-  /* Add flex settings to weight items at the top */
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* Aligns items to the top */
+  justify-content: flex-start;
+  border-color: #815b49;
 }
 
 
@@ -138,7 +214,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin: 50px 0;
 }
 
 .entries-container .header h1 {
@@ -176,181 +252,9 @@ body {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
-  margin-top: 10px;
+  margin: 0 20px;
 }
 
 .entries-container button:hover {
-  background-color: #6c363d;
-}
-
-
-  /* Lily image positioned in the top-right of the container */
-  .corner-image {
-    position: absolute;
-    top: -10px;
-    right: -25px;
-    max-width: 350px;
-  }
-  
-  h1 {
-    font-family: 'HugMeTight';
-    color: #8f464c;
-    font-size: 1.5rem;
-    margin-bottom: 50px;
-}
-
-  p {
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  }
-  
-  .login-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: 50%; /* Adjust as needed */
-    max-width: 300px;
-}
-
-.login-form input[type="text"],
-.login-form input[type="password"] {
-    padding: 10px;
-    font-size: 1rem;
-    color: #a06158;
-    background-color: #cec69d;
-    border: 2px solid #C7947C;
-    border-radius: 5px;
-    text-align: center;
-    font-family: 'HugMeTight';
-    outline: none; /* Remove the default outline */
-    transition: background-color 0.2s ease; /* Smooth transition */
-}
-
-.login-form input[type="text"]::placeholder,
-.login-form input[type="password"]::placeholder {
-    color: #b1a87a; /* Change to your desired placeholder color */
-    opacity: 1; /* Ensures the color is fully applied */
-}
-
-/* Darken background color on focus */
-.login-form input[type="text"]:focus,
-.login-form input[type="password"]:focus {
-    background-color: #c0b78d; /* Slightly darker background to indicate focus */
-}
-
-.login-form button {
-  padding: 10px;
-  font-size: 1rem;
-  background-color: #465355;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  width: 40%;          /* Sets the button width */
-  margin: 0 auto;       /* Centers the button horizontally */
-}
-
-
-.login-form button:hover {
-    background-color: #333;
-    color: beige;
-}
-
-.error-message {
-  color: rgb(168, 18, 18);
-  font-size: 0.9rem;
-  margin-top: 10px;
-}
-
-/* Date display in the top right */
-.date-display {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  font-size: 0.9rem;
-  color: #8f464c;
-  font-family: 'HugMeTight';
-}
-
-/* Diary form and textarea styles */
-.diary-form {
-  display: flex;
-  flex-direction: column;
-  height: 100%; /* Makes the form fill the container */
-  gap: 20px;
-}
-
-.diary-form textarea {
-  flex-grow: 1; /* Allows textarea to expand and fill available space */
-  padding: 20px;
-  font-size: 1rem;
-  line-height: 1.6;
-  background-color: #fffef5;
-  background-image: linear-gradient(#cec69d 1px, transparent 1px);
-  background-size: 100% 24px; /* Line spacing */
-  border: none;
-  border-radius: 10px;
-  outline: none;
-  resize: none;
-  font-family: 'HugMeTight';
-  color: #333;
-}
-
-.diary-form textarea::placeholder {
-  color: #b1a87a;
-  opacity: 1;
-}
-
-/* Save Entry button */
-.diary-form button {
-  padding: 10px 15px;
-  font-size: 1rem;
-  background-color: #8f464c;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  align-self: flex-end; /* Aligns button to the bottom */
-}
-
-.diary-form button:hover {
-  background-color: #6c363d;
-}
-
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-ul li {
-  margin: 10px 0;
-}
-
-ul li a {
-  text-decoration: none;
-  color: #333;
-  font-weight: bold;
-  margin-right: 10px;
-}
-
-ul li a:hover {
-  text-decoration: underline;
-}
-
-button {
-  padding: 10px 15px;
-  font-size: 1rem;
-  background-color: #8f464c;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  margin: 20px;
-}
-
-button:hover {
   background-color: #6c363d;
 }

@@ -7,22 +7,24 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <div class="container entries-container">
+    <div class="container entries-container" style="background-image: url('{{ url_for('static', filename='images/paper.png') }}'); background-size: cover; background-repeat: no-repeat;">
         <div class="header">
             <h1>Your Diary Entries</h1>
-            <button onclick="window.location.href='{{ url_for('diary') }}'">New Entry</button>
+            <button onclick="window.location.href='{{ url_for('diary') }}'">new entry</button>
         </div>
-
+    
         <ul>
             {% for entry in entries %}
                 <li>
                     <a href="{{ url_for('view_entry', id=entry['id']) }}">{{ entry['date'] }}</a>
-                    <a href="{{ url_for('delete_entry', id=entry['id']) }}" style="color: red;">Delete</a>
+                    <a href="{{ url_for('delete_entry', id=entry['id']) }}" style="color: rgb(202, 20, 20);">Delete</a>
                 </li>
             {% endfor %}
         </ul>
-
-        <button onclick="window.location.href='{{ url_for('logout') }}'">Close Diary</button>
+    
+        <button onclick="window.location.href='{{ url_for('logout') }}'">close diary</button>
     </div>
+    
+
 </body>
 </html>

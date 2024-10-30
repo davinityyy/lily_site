@@ -44,15 +44,30 @@ def diary():
 def entries():
     conn = get_db_connection()
     entries = conn.execute('SELECT * FROM entries WHERE deleted = 0 ORDER BY date DESC').fetchall()
-    conn.close()
-    return render_template('entries.html', entries=entries)
 
-@app.route('/entry/<int:id>')
+    # Format the date
+    formatted_entries = []
+    for entry in entries:
+        date_obj = datetime.strptime(entry['date'], '%Y-%m-%d %H:%M:%S')
+        formatted_date = date_obj.strftime('%A, %m-%d-%Y ~ %B').lower()
+        formatted_entries.append({'id': entry['id'], 'date': formatted_date, 'content': entry['content']})
+
+    conn.close()
+    return render_template('entries.html', entries=formatted_entries)
+
+@app.route('/view_entry/<int:id>')
 def view_entry(id):
     conn = get_db_connection()
-    entry = conn.execute('SELECT * FROM entries WHERE id = ? AND deleted = 0', (id,)).fetchone()
+    entry = conn.execute('SELECT * FROM entries WHERE id = ?', (id,)).fetchone()
     conn.close()
-    return render_template('view_entry.html', entry=entry)
+
+    # Format the date into day, date, and time separately
+    date_obj = datetime.strptime(entry['date'], '%Y-%m-%d %H:%M:%S')
+    day = date_obj.strftime('%A').lower()
+    formatted_date = date_obj.strftime('%m-%d-%Y')
+    time = date_obj.strftime('%H:%M %p').lower()
+
+    return render_template('view_entry.html', entry=entry, day=day, date=formatted_date, time=time)
 
 @app.route('/delete/<int:id>')
 def delete_entry(id):

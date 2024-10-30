@@ -8,7 +8,11 @@
 </head>
 <body>
     <div class="container">
-        <h1>{{ entry['date'] }}</h1>
+        <h1 class="entry-date">
+            <span>{{ day }}</span><br>
+            <span>{{ date }}</span><br>
+            <span>{{ time }}</span>
+        </h1>
         <p>{{ entry['content'] }}</p>
         <button onclick="window.location.href='{{ url_for('entries') }}'">Back to Entries</button>
     </div>
